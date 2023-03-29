@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StatusBar, StyleSheet} from 'react-native';
+import {View, Text, StatusBar,} from 'react-native';
 import {useSafeArea} from 'react-native-safe-area-context';
 import {TOPNAVI_H, BANNER_H} from './constants';
 import {BasicButton} from '@phomea/react-native-buttons';
-import {
-  stylesed,
-} from './../component/style'
+import { stylesed, } from './style';
+import Arrow from 'react-native-arrow'
+
 const TopNavigation = props => {
   const safeArea = useSafeArea();
 
@@ -33,7 +33,7 @@ const TopNavigation = props => {
         translucent
       />
       <View style={styles.container(safeArea, isFloating, isTransparent)}>
-        <BasicButton title="Basic button"  />
+        <BasicButton style={styles.back} title= <Arrow size={15} color={'white'} />/>
         <Text style={styles.title(isTransparent)}>{title}</Text>
       </View>
     </>
@@ -61,7 +61,12 @@ const styles = {
   but: isTransparent =>({
     left: 10,
     color: isTransparent ? '#FFF' : '#000',
-  })
+  }),
+
+  back: {
+    marginRight: '70%',
+    transform: [{rotate: '180deg'}],
+  }
   
 };
 
