@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StatusBar,} from 'react-native';
+import {View, Text, StatusBar,Button} from 'react-native';
 import {useSafeArea} from 'react-native-safe-area-context';
 import {TOPNAVI_H, BANNER_H} from './constants';
 import {BasicButton} from '@phomea/react-native-buttons';
-import { stylesed, } from './style';
 import Arrow from 'react-native-arrow'
 
 const TopNavigation = props => {
@@ -33,8 +32,10 @@ const TopNavigation = props => {
         translucent
       />
       <View style={styles.container(safeArea, isFloating, isTransparent)}>
-        <BasicButton style={styles.back} title= <Arrow size={15} color={'white'} />/>
-        <Text style={styles.title(isTransparent)}>{title}</Text>
+        <View style={styles.view3}>
+        <BasicButton  title= <Arrow size={15} color={'white'} />/>
+        </View>
+
       </View>
     </>
   );
@@ -45,9 +46,9 @@ const styles = {
     paddingTop: safeArea.top,
     marginBottom: isFloating ? -TOPNAVI_H - safeArea.top : 0,
     height: TOPNAVI_H + safeArea.top,
-    justifyContent: 'center',
+
     shadowOffset: {y: 0},
-    backgroundColor: isTransparent ? '#0001' : '#FFF',
+    backgroundColor: isTransparent ? '#0001' : '#695142',
     shadowOpacity: isTransparent ? 0 : 0.5,
     elevation: isTransparent ? 0.01 : 5,
     zIndex: 100,
@@ -58,15 +59,21 @@ const styles = {
     fontSize: 16,
     color: isTransparent ? '#FFF' : '#000',
   }),
-  but: isTransparent =>({
-    left: 10,
-    color: isTransparent ? '#FFF' : '#000',
-  }),
+  backb: {
+    alignItems: 'right',
+    justifyContent: 'center',
+    width: 250,
+    height: 396,
+    backgroundColor: 'black',
+  },
+  view3: {
+    marginTop: '2%',
+    marginLeft: '5%',
+    marginRight: '80%',
+    borderRadius: 20,
+    transform: [{rotate: '180deg'}]
+  },
 
-  back: {
-    marginRight: '70%',
-    transform: [{rotate: '180deg'}],
-  }
   
 };
 
